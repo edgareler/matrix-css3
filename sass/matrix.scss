@@ -1,0 +1,67 @@
+@import 'base';
+
+@font-face {
+  font-family: 'JapanGothic';
+  src: url('../fonts/fgmodernttf/FGModernGothic.ttf');
+}
+
+body {
+  background: black;
+  margin: 0;
+  overflow: hidden;
+  font: bold 18px JapanGothic;
+  line-height: 20px;
+  /*color: #70F579;*/
+  color: transparent;
+  text-shadow: 0 0 2px #02680a/*#35E161*/;
+}
+
+#code {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.col {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 20px;
+  text-align: center;
+}
+
+.mask {
+  position: absolute;
+  top: -2160px;
+  left: 0;
+  width: 100%;
+  max-width: 20px;
+  height: 3240px;
+
+  /*@include linear-gradient(transparent, to bottom, black, black 1080px, white 1080px, white 2160px, black 2160px);*/
+
+  background: url(../images/bg.svg) repeat-x;
+
+  @include animation-duration(10s);
+  @include animation-name(rain);
+  @include animation-iteration-count(infinite);
+  @include animation-play-state(paused);
+  @include animation-timing-function(steps(108));
+}
+
+.running {
+  @include animation-play-state(running);
+}
+
+.mask:nth-child(2) {
+  @include animation-delay(2s);
+}
+
+@include keyframes(rain) {
+  100% {
+    top: 0px;
+  }
+}
